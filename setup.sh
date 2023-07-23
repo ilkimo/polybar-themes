@@ -19,9 +19,11 @@ install_themes() {
 	if [[ -d "$PDIR" ]]; then
 		echo -e "[*] Creating a backup of your polybar configs..."
 		mv "$PDIR" "${PDIR}.old"
-		{ mkdir -p "$PDIR"; cp -rf $DIR/$STYLE/* "$PDIR"; }
+		# Create symlink 
+		{ ln -s ~/repos/dotfiles/polybar/polybar-themes/$STYLE ~/.config/polybar; }
 	else
-		{ mkdir -p "$PDIR"; cp -rf $DIR/$STYLE/* "$PDIR"; }	
+		# Create symlink
+		{ ln -s ~/repos/dotfiles/polybar/polybar-themes/$STYLE ~/.config/polybar; }
 	fi
 	if [[ -f "$PDIR/launch.sh" ]]; then
 		echo -e "[*] Successfully Installed.\n"
